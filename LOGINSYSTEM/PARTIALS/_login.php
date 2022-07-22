@@ -20,17 +20,19 @@ $usernameexists=false;
 $isvalid=false;
 
 $checkusername="SELECT * FROM login WHERE Username='$username'";
-$result=mysqli_query($conn,$checkusername);
+$result=mysqli_query($conn,$checkusername); //is in bit format
 if(mysqli_num_rows($result)==1)
 {
     $usernameexists=true;
-    $data=mysqli_fetch_row($result);
+
+    
+    $data=mysqli_fetch_row($result); //arrayformat
 
     //checking if credentials are valid//
 
     if($data[0]==$username && $data[1]==$pass)
     {
-        header("Location: ../../MAIN SYSTEM FRAMEWORK/homepage.php");
+        header("Location: ../../MAIN SYSTEM FRAMEWORK/homepage.php"); //redirection
         $isvalid=true;
     }
 }
@@ -61,7 +63,7 @@ if(mysqli_num_rows($result)==1)
     else if($isvalid==false)
     {
      echo'<div class="alert alert-danger alert-dismissible fade show" role="alert">
-        <strong>Error!</strong>  "Password not valid ...<a href="../forgotpassword.php">forgot password??</a>"
+        <strong>Error!</strong>  "Password not valid ...<a href="../login.php">Try again</a>"
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">×</span>
         </button>

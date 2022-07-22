@@ -10,6 +10,11 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
     <title>SignUp</title>
+    <script type="text/javascript">
+    function preventback(){window.history.forward()};
+    setTimeout("preventback()",0);
+    window.onunload=function(){null;}
+  </script>
 </head>
 
 <body>
@@ -42,6 +47,8 @@
                                     <input type="date" class="form-control" id="Dob" name="Dob">
                                 </div>
                                 <button type="submit" class="btn btn-primary">SignUp</button>
+                                <button type="button" class="btn btn-link"><a href="login.php">Login</a></button>
+
                             </form>
                         </div>
                     </div>

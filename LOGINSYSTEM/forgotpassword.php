@@ -6,6 +6,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>login</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+  <script type="text/javascript">
+    function preventback(){window.history.forward()};
+    setTimeout("preventback()",0);
+    window.onunload=function(){null;}
+  </script>
 </head>
 
 <body>
@@ -28,6 +33,7 @@
                 <input type="date" class="form-control" id="Dob" name="Dob">
               </div>
               <button type="submit" class="btn btn-primary">Submit</button>
+              <button type="button" class="btn btn-link"><a href="login.php">Login</a></button>
             </form>
           </div>
           <div class='col-4'></div>
