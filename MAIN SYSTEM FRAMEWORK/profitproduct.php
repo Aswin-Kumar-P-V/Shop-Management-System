@@ -2,7 +2,7 @@
 //connecting to database via config.php inpartials folder//
 
 include "PARTIALS/config.php";
-
+include "session.php";
 ?>
 
 <!doctype html>

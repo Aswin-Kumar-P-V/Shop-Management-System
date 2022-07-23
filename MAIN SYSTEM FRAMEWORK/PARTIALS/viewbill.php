@@ -37,7 +37,7 @@
     -->
     <?php
     include "config.php";
-    session_start();
+    include "session.php";
     $name = $_SESSION['tablename']; ?>
     <div class="container">
         <h4>Customer name is :<?= $name; ?><h4>

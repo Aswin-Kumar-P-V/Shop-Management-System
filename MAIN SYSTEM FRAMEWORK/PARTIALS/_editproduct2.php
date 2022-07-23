@@ -3,7 +3,7 @@
 //connecting to database via config.php inpartials folder//
 
 include 'config.php';
-
+include "session.php";
 //fetching data//
 
 $p_code = $_POST['p_code'];
@@ -24,7 +24,7 @@ if ($p_code != null || $p_name != null) {
 } else {
     $alert = true;
 }
-session_start();
+
 $_SESSION['product_code']=$p_code;
 ?>
 

@@ -1,1 +1,8 @@
-INSERT INTO `product` (`product_code`, `product_name`, `purchase`, `sales`, `mrp`, `wholesale_rate`) VALUES ('1', 'munch', '10', '', '5', '4')
+<?php
+session_start();
+
+session_unset();
+session_destroy();
+
+header("location:login.php");
+?>

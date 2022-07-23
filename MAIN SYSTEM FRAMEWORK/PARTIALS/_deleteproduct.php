@@ -3,7 +3,7 @@
 //connecting to database via config.php inpartials folder//
 
 include 'config.php';
-
+include "session.php";
 //fetching data//
 
 $p_code = $_POST['p_code'];

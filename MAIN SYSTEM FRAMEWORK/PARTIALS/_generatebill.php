@@ -1,6 +1,6 @@
 
     <?php
-
+    include "session.php";
     $isfill = true;
     $name = $_POST['name'];
     $quantity = $_POST['product'];
@@ -46,10 +46,9 @@
 
         //creating tabel//
 
-       
+
         //echo preg_match( $phone,$regex);
         $sql = "CREATE TABLE `rdbms_minproject`.`$name` (`product_code` VARCHAR(50) PRIMARY KEY NOT NULL , `product_name` VARCHAR(20) NOT NULL , `product_quantity` INT(5) NOT NULL , `product_price` INT(10) NOT NULL ) ";
-        session_start();
         if (isset($quantity)) {
             $_SESSION['quantity'] = $quantity;
             $_SESSION['tablename'] = $name;

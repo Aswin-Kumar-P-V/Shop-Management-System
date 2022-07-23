@@ -12,7 +12,8 @@ $ifexists=true;
 
 $username=$_POST["Username"];
 $pass=$_POST["Password"];
-
+session_start();
+$_SESSION['login_user']=$username;
 
 //checking is username exists//
 

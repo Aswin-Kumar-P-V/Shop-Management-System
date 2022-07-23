@@ -1,7 +1,7 @@
 <?php
 
 //using session to take product code//
-session_start();
+include "session.php";
 //connecting to database via config.php inpartials folder//
 
 include 'config.php';
