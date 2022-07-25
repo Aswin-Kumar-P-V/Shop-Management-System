@@ -86,7 +86,7 @@ $_SESSION['product_code']=$p_code;
                     <td>$values</td>";
             }
         echo'<div class="container my-4">
-        <h2 class="text-center">Please Enter The Column Name And News Value Of The Detail You Would Like to Edit 📝</h2>
+        <h2 class="text-center">Please Enter The Column Name And New Value Of The Detail You Would Like to Edit 📝</h2>
         <form action="_editproduct3.php" method="post">
 
             <div class="form-group">

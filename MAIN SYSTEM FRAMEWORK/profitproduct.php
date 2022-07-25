@@ -72,7 +72,7 @@ include "session.php";
                 echo "<tr>
                 <th scope='row'>$values[0]</th>
                 <td>$values[1]</td>
-                <td>$profit</td>
+                <td>$profit rs</td>
               </tr>";
             }
             
@@ -80,7 +80,7 @@ include "session.php";
         echo"<tr>
             <th>Total Profit</th>
             <td></td>
-            <th>$totalprofit</th>
+            <th>$totalprofit rs</th>
             <tr>";
         ?>
     </div>

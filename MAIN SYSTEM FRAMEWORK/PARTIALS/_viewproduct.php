@@ -75,8 +75,8 @@ include "session.php";
                 <td>$values[1]</td>
                 <td>$values[2]</td>
                 <td>$values[3]</td>
-                <td>$values[4]</td>
-                <td>$values[5]</td>
+                <td>$values[4] rs</td>
+                <td>$values[5] rs</td>
               </tr>";
             }
         }

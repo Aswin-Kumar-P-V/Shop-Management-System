@@ -23,7 +23,7 @@
   <div class="card-body">
     
   
-    <h4 class="text-center">Login to our web-application 🔑</h4>
+    <h4 class="text-center">Login to our Shop Management System 🔑</h4>
     <form action="PARTIALS/_login.php" method="post">
       <div class="form-group">
         <label for="username">Username</label>

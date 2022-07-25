@@ -9,14 +9,19 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
 
+    <style> .container-fluid{
 
+width:40%;
+margin-left: 21%;
+
+}</style>
 </head>
 
 <body>
     <!--navbar-->
 
     <nav class="navbar navbar-expand-lg bg-dark">
-        <div class="container-fluid">
+        <div class="">
             <a class="navbar-brand" href="../homepage.php">Main Page</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -40,10 +45,10 @@
     include "session.php";
     $name = $_SESSION['tablename']; ?>
     <div class="container">
-        <h4>Customer name is :<?= $name; ?><h4>
+        <h4>Customer Name :<?= $name; ?><h4>
     </div>
     <?php
-    $total=0;
+    $total = 0;
     $mysql = "SELECT * FROM `$name` WHERE 1";
     $result = mysqli_query($conn, $mysql);
     $rows = mysqli_fetch_all($result);
@@ -59,22 +64,24 @@
             </thead>
             <tbody>';
     foreach ($rows as $values) {
-            echo "<tr>
+        echo "<tr>
                     <th scope='row'>$values[0]</th>
                     <td>$values[1]</td>
                     <td>$values[2]</td>
-                    <td>$values[3]</td>
+                    <td>$values[3] rs</td>
                   </tr>";
-                  $total+=$values[3];
-        }
-        echo "<tr>
+        $total += $values[3];
+    }
+    echo "<tr>
                     <th scope='row'><b>TOTAL</b></th>
                     <td></td>
                     <td></td>
-                    <td>$total</td>
-                  </tr>";
-        $sql="DROP TABLE `$name`";
-        $result=mysqli_query($conn,$sql);
+                    <th>$total rs</th>
+                  </tr>
+                  <tr><td></td><td colspan='2'><div class='tet-centre'><button type='button' class='container-fluid btn btn-primary' onclick='window.print()'>Print</button></div></td><td></td>";
+    $sql = "DROP TABLE `$name`";
+    $result = mysqli_query($conn, $sql);
+
     ?>
 </body>
 

@@ -26,7 +26,7 @@
                     <img src="PARTIALS/signup.gif" class="card-img-top" alt="...">
                     <div class="card-body">
                         <div class="container my-4">
-                            <h3 class="text-center">Signup to our website 📝</h3>
+                            <h3 class="text-center">Signup 📝</h3>
                             <form action="PARTIALS/_signup.php" method="post">
                                 <div class="form-group">
                                     <label for="username">Username</label>
