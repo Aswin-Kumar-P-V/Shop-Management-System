@@ -55,7 +55,7 @@ if(mysqli_num_rows($result)==1)
     if($usernameexists==false)
     {
     echo'<div class="alert alert-danger alert-dismissible fade show" role="alert">
-        <strong>Error!</strong> User profile does not exist ... please <a href="../signup.php">sign up</a> to create a user profile
+        <strong>Error!</strong> User profile does not exist ... please <a href="../signup.php">sign up</a> to create a user profile or<a href="../login.php">try again</a>
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">×</span>
         </button>

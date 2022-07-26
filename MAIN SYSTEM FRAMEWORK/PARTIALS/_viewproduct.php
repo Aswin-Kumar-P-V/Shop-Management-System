@@ -57,7 +57,7 @@ include "session.php";
                 <tr>
                     <th scope="col">Product Code</th>
                     <th scope="col">Product Name</th>
-                    <th scope="col">Purchases Made</th>
+                    <th scope="col">Stock Available</th>
                     <th scope="col">Sales Made</th>
                     <th scope="col">MRP</th>
                     <th scope="col">Wholesale Rate</th>

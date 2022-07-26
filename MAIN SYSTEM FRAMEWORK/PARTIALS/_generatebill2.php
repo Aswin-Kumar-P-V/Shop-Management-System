@@ -28,14 +28,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $mysql = "INSERT INTO `$tablename` (`product_code`, `product_name`, `product_quantity`, `product_price`) VALUES ('$p_code', '$p_name', '$p_quantity', '$price')";
         $result = mysqli_query($conn, $mysql);
 
-        //updating sales value
+        //updating sales and purchases value
 
-    $sql = "SELECT sales FROM `product` WHERE product_code=$p_code and product_name='$p_name'";
+    $sql = "SELECT sales,purchases FROM `product` WHERE product_code=$p_code and product_name='$p_name'";
     $result = mysqli_query($conn, $sql);
     $data = mysqli_fetch_row($result);
     $newsales = $data[0] + $p_quantity;
+    $newpurchases=$data[1]-$p_quantity;
     $sql = "UPDATE product set sales=$newsales WHERE product_code=$p_code";
+    $query ="UPDATE product set purchases=$newpurchases WHERE product_code=$p_code";
     $result = mysqli_query($conn, $sql);
+    $result1= mysqli_query($conn,$query);
     }
     
 
