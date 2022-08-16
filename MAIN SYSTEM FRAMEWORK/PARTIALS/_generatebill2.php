@@ -1,20 +1,20 @@
 <?php
 include "session.php";
+include "config.php";
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
-    include "config.php";
+
     //fetching values
-    $p_code = $_POST['p_code'];
-    $p_name = $_POST['p_name'];
+    $p_name = $_POST['productlist'];
     $p_quantity = $_POST['p_quantity'];
     $error = false;
     //fething mrp
-    $sql = "SELECT mrp FROM `product` WHERE product_code ='$p_code' AND product_name='$p_name'";
+    $sql = "SELECT mrp FROM `product` WHERE  product_name='$p_name'";
     $result = mysqli_query($conn, $sql);
     $rows = mysqli_fetch_row($result);
     //validating input data and updating session quantity
-    if (mysqli_num_rows($result) == 0 || $p_code == null || $p_name == null || $p_quantity == null) {
+    if (mysqli_num_rows($result) == 0 || $p_name == null || $p_quantity == null) {
         echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
         <strong>Error!</strong> Missing or invalid credentials ... try again"
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -25,18 +25,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         $tablename = $_SESSION['tablename'];
         $price = $p_quantity * $rows[0];
-        $mysql = "INSERT INTO `$tablename` (`product_code`, `product_name`, `product_quantity`, `product_price`) VALUES ('$p_code', '$p_name', '$p_quantity', '$price')";
+        $sql2="SELECT product_code FROM `product` WHERE product_name='$p_name'";
+        $result1= mysqli_query($conn,$sql2);
+        $data1= mysqli_fetch_row($result1);
+        $mysql = "INSERT INTO `$tablename` (`product_code`, `product_name`, `product_quantity`, `product_price`) VALUES ('$data1[0]', '$p_name', '$p_quantity', '$price')";
         $result = mysqli_query($conn, $mysql);
 
         //updating sales and purchases value
 
-        $sql = "SELECT sales,purchases FROM `product` WHERE product_code=$p_code and product_name='$p_name'";
+        $sql = "SELECT sales,purchases FROM `product` WHERE product_name='$p_name'";
         $result = mysqli_query($conn, $sql);
         $data = mysqli_fetch_row($result);
         $newsales = $data[0] + $p_quantity;
         $newpurchases = $data[1] - $p_quantity;
-        $sql = "UPDATE product set sales=$newsales WHERE product_code=$p_code";
-        $query = "UPDATE product set purchases=$newpurchases WHERE product_code=$p_code";
+        $sql = "UPDATE product set sales=$newsales WHERE product_name='$p_name'";
+        $query = "UPDATE product set purchases=$newpurchases WHERE product_name='$p_name'";
         $result = mysqli_query($conn, $sql);
         $result1 = mysqli_query($conn, $query);
     }
@@ -47,11 +50,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($_SESSION['quantity'] == 0) {
         header("location: viewbill.php");
     }
-    $sql0 = "SELECT * FROM `product` WHERE 1";
-$result0 = mysqli_query($conn, $sql);
-$data = mysqli_fetch_all($result);
 }
-
+$sql = "SELECT * FROM `product` WHERE 1";
+$result = mysqli_query($conn, $sql);
+$data = mysqli_fetch_all($result);
 
 
 ?>
@@ -104,16 +106,25 @@ $data = mysqli_fetch_all($result);
                         <h5 class="card-title"></h5>
                         <p class="card-text">
                         <div class="container">
+
                             <form method="POST" action="_generatebill2.php">
                                 <div class="form-group">
                                     <label for="prduct code">Product:</label>
-                                    <select name="cars" id="cars">
+                                    <select name="productlist" id="product list">
+                                        <option value="Select">Select</option>
                                         <?php
+                                        $c=0;
                                         foreach ($data as $values) 
                                         {
-                                        echo"<option value='$values[1]'>hjjhgj</option>";
+                                            if($c==0)
+                                            {
+                                                $c++;
+                                                continue;
+                                            }
+                                            echo "<option value='$values[1]'>$values[0].$values[1]</option>";
                                         }
                                         ?>
+                                    </select>
                                 </div>
 
                                 <div class="form-group">
