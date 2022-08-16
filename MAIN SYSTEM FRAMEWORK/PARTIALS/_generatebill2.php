@@ -1,7 +1,7 @@
 <?php
 include "session.php";
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    
+
 
     include "config.php";
     //fetching values
@@ -30,24 +30,30 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         //updating sales and purchases value
 
-    $sql = "SELECT sales,purchases FROM `product` WHERE product_code=$p_code and product_name='$p_name'";
-    $result = mysqli_query($conn, $sql);
-    $data = mysqli_fetch_row($result);
-    $newsales = $data[0] + $p_quantity;
-    $newpurchases=$data[1]-$p_quantity;
-    $sql = "UPDATE product set sales=$newsales WHERE product_code=$p_code";
-    $query ="UPDATE product set purchases=$newpurchases WHERE product_code=$p_code";
-    $result = mysqli_query($conn, $sql);
-    $result1= mysqli_query($conn,$query);
+        $sql = "SELECT sales,purchases FROM `product` WHERE product_code=$p_code and product_name='$p_name'";
+        $result = mysqli_query($conn, $sql);
+        $data = mysqli_fetch_row($result);
+        $newsales = $data[0] + $p_quantity;
+        $newpurchases = $data[1] - $p_quantity;
+        $sql = "UPDATE product set sales=$newsales WHERE product_code=$p_code";
+        $query = "UPDATE product set purchases=$newpurchases WHERE product_code=$p_code";
+        $result = mysqli_query($conn, $sql);
+        $result1 = mysqli_query($conn, $query);
     }
-    
+
 
     //taking value of quantity
     $_SESSION['quantity']--;
     if ($_SESSION['quantity'] == 0) {
         header("location: viewbill.php");
     }
+    $sql0 = "SELECT * FROM `product` WHERE 1";
+$result0 = mysqli_query($conn, $sql);
+$data = mysqli_fetch_all($result);
 }
+
+
+
 ?>
 
 <!doctype html>
@@ -100,14 +106,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <div class="container">
                             <form method="POST" action="_generatebill2.php">
                                 <div class="form-group">
-                                    <label for="prduct code">Product Code</label>
-                                    <input type="text" class="form-control" id="p_code" name="p_code" aria-describedby="emailHelp">
+                                    <label for="prduct code">Product:</label>
+                                    <select name="cars" id="cars">
+                                        <?php
+                                        foreach ($data as $values) 
+                                        {
+                                        echo"<option value='$values[1]'>hjjhgj</option>";
+                                        }
+                                        ?>
                                 </div>
 
-                                <div class="form-group">
-                                    <label for="prduct name">Product Name</label>
-                                    <input type="text" class="form-control" id="p_name" name="p_name" aria-describedby="emailHelp">
-                                </div>
                                 <div class="form-group">
                                     <label for="prduct name">Product quantity</label>
                                     <input type="number" class="form-control" id="p_quantity" name="p_quantity" aria-describedby="emailHelp">
