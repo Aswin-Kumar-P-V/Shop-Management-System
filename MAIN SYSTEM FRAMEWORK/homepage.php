@@ -68,8 +68,6 @@ include "session.php";
             <a href="addproduct.php" class="btn btn-primary">Go Here</a>
             <p class="card-text">To edit existing product details</p>
             <a href="PARTIALS/_editproduct1.php" class="btn btn-primary">Go Here</a>
-            <p class="card-text">To delete an existing product details</p>
-            <a href="deleteproduct.php" class="btn btn-primary">Go Here</a>
           </div>
         </div>
       </div>

@@ -8,9 +8,7 @@ include 'config.php';
 
 //fetching data//
 
-$col_name = $_POST['c_name'];
-$col_value = $_POST['new_value'];
-$p_code = $_SESSION['product_code'];
+
 //seeting alert as true//
 $alert = true;
 

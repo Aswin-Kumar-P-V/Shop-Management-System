@@ -1,34 +1,12 @@
 <?php
-
-//connecting to database via config.php inpartials folder//
-
-include 'config.php';
+include "config.php";
 include "session.php";
-//fetching data//
 
 $p_code = $_POST['p_code'];
-$p_name = $_POST['p_name'];
-
-//setting alert //
-
-
-if ($p_code != null || $p_name != null) {
-    $checksql = "SELECT * FROM `product` WHERE product_code='$p_code' AND product_name='$p_name'";
-    $result = mysqli_query($conn, $checksql);
-    if (mysqli_num_rows($result) == 1) {
-        $data = mysqli_fetch_row($result);
-        $alert = false;
-    } else {
-        $alert = true;
-    }
-} else {
-    $alert = true;
-}
-
-$_SESSION['product_code']=$p_code;
+$sql = "SELECT * FROM `product` WHERE product_code=$p_code";
+$result = mysqli_query($conn, $sql);
+$data = mysqli_fetch_all($result);
 ?>
-
-
 <!doctype html>
 <html lang="en">
 
@@ -38,7 +16,7 @@ $_SESSION['product_code']=$p_code;
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
 </head>
 
 <body>
@@ -52,61 +30,65 @@ $_SESSION['product_code']=$p_code;
             </button>
         </div>
     </nav>
-   
 
-    <?php
-    if ($alert == true) {
-        echo '
-        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-        <strong>Error!</strong> Missing or invalid credentials.. <a href="_editproduct1.php">try again</a>
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">×</span>
-        </button>
-    </div> ';
-    } else {
-        echo "
-        <div class='alert alert-primary' role='alert'>
-        Product Code And Name Are Not Editable!..<a href='_editproduct1.php'>back</a>
-      </div><div class='container my-4'>
-        
-        <table class='table table-striped table-bordered'>
-            <thead class='thead-dark'>
-                <tr>
-                    <th scope='col'>Product_Code</th>
-                    <th scope='col'>Product_Name</th>
-                    <th scope='col'>Purchases</th>
-                    <th scope='col'>Sales</th>
-                    <th scope='col'>MRP</th>
-                    <th scope='col'>Wholesale_Rate</th>
-                </tr>
-            </thead>
-            <tbody><tr>";
-        foreach ($data as $values) {
-                echo "
-                    <td>$values</td>";
-            }
-        echo'<div class="container my-4">
-        <h2 class="text-center">Please Enter The Column Name And New Value Of The Detail You Would Like to Edit 📝</h2>
-        <form action="_editproduct3.php" method="post">
+    <!-- Optional JavaScript; choose one of the two! -->
 
-            <div class="form-group">
-                <label for="prduct code">Column Name</label>
-                <input type="text" class="form-control" id="c_name" name="c_name" aria-describedby="emailHelp">
+    <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js" integrity="sha384-VHvPCCyXqtD5DqJeNxl2dtTyhF78xXNXdkwX1CZeRusQfRKp+tA7hAShOK/B/fQ2" crossorigin="anonymous"></script>
+    -->
+    <br>
+    <br>
+    <div class="container">
+        <div class="row">
+            <div class="col-4"></div>
+            <div class="col-4">
+                <div class="card" style="width: 18rem;">
+                    <img src="../IMAGES/product.gif" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title"></h5>
+                        <p class="card-text">
+                        <div class="container">
+
+                            <form method="POST" action="_editproduct3.php">
+                                <div class="form-group">
+                                    <label for="prduct code">Product Code</label>
+                                    <input type="text" class="form-control" id="p_code" name="p_code" aria-describedby="emailHelp" readonly="readonly" value=<?php echo $data[0][0]?>>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="prduct name">Product Name</label>
+                                    <input type="text" class="form-control" id="p_name" name="p_name" aria-describedby="emailHelp" readonly="readonly" value=<?php echo $data[0][1]?> >
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="purchases">Stock available</label>
+                                    <input type="text" class="form-control" id="purchases" name="purchases" aria-describedby="emailHelp" value=<?php echo $data[0][2]?> >
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="MRP">MRP</label>
+                                    <input type="text" class="form-control" id="mrp" name="mrp" aria-describedby="emailHelp"value=<?php echo $data[0][4]?>>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="wholesale rate">Wholesale Rate</label>
+                                    <input type="text" class="form-control" id="w_rate" name="w_rate" aria-describedby="emailHelp" value=<?php echo $data[0][5]?>>
+                                </div>
+                                <button type="submit" class="btn btn-primary" name="save">Submit</button><br>
+                            </form>
+                        </div>
+                        </p>
+                    </div>
+                </div>
             </div>
-            <div class="form-group">
-                <label for="prduct name">New Value</label>
-                <input type="text" class="form-control" id="new_value" name="new_value" aria-describedby="emailHelp">
-            </div>
 
-            <button type="submit" class="btn btn-primary">GO</button>
-        </form>
-        <br><br>
-    </div>'
-        ;
-    }
-    if($alert==false)
-    echo"
-    <h2 class='text-center'> Product Details📦👁️‍🗨️</h2><br><br>";
-    ?>
 </body>
+
 </html>

@@ -101,7 +101,7 @@ $data = mysqli_fetch_all($result);
             <div class="col-4"></div>
             <div class="col-4">
                 <div class="card" style="width: 18rem;">
-                    <img src="../IMAGES/product.gif" class="card-img-top" alt="...">
+                    <img src="../IMAGES/bill2.gif" class="card-img-top" alt="...">
                     <div class="card-body">
                         <h5 class="card-title"></h5>
                         <p class="card-text">
