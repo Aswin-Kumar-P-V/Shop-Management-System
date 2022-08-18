@@ -31,7 +31,7 @@ if($p_code==null || $p_name==null || $p_name==null || $purchases==null || $mrp==
 }
 
 if($no_of_cols<1 && $alert==false){
-$alert=true;
+
 $sql="INSERT INTO `product` (`product_code`, `product_name`, `purchases`, `sales`, `mrp`, `wholesale_rate`) VALUES ('$p_code', '$p_name', '$purchases', '', '$mrp', '$w_rate')";
     try
     {
@@ -39,7 +39,6 @@ $sql="INSERT INTO `product` (`product_code`, `product_name`, `purchases`, `sales
     }
     catch(exception $except)
     {
-        $alert=false;
         echo$except;
     }
 }
@@ -88,7 +87,17 @@ else{
   </nav>
 
     <?php
-    if($alert && $uniquep_code)
+    
+    if($uniquep_code==false)
+    {
+      echo'<div class="alert alert-danger alert-dismissible fade show" role="alert">
+      <strong>Error!</strong> Duplicate Product Code!! <br>  <a href="../addproduct.php">try again?</a> 
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">×</span>
+      </button>
+  </div> ';
+    }
+    elseif($alert)
     {
         echo'<div class="alert alert-success alert-dismissible fade show" role="alert">
         <strong>Success!</strong> Product has been added <br> Click  <a href="../addproduct.php">here</a> to go back

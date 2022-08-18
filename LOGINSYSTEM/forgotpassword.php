@@ -26,11 +26,11 @@
             <form action="PARTIALS/_forgotpassword.php" method="post">
               <div class="form-group">
                 <label for="username">Username</label>
-                <input type="text" class="form-control" id="Username" name="Username" aria-describedby="emailHelp">
+                <input type="text" class="form-control" id="Username" name="Username" aria-describedby="emailHelp" required>
               </div>
               <div class="form-group">
                 <label for="date of birth">Date Of Birth</label>
-                <input type="date" class="form-control" id="Dob" name="Dob">
+                <input type="date" class="form-control" id="Dob" name="Dob" required>
               </div>
               <button type="submit" class="btn btn-primary">Submit</button>
               <button type="button" class="btn btn-link"><a href="login.php">Login</a></button>

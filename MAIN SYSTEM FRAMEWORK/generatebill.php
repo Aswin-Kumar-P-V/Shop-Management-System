@@ -44,12 +44,12 @@ include "session.php";
     <form action="PARTIALS/_generatebill.php" method='post'>
       <div class="form-group">
         <label for="InputName">Name of customer</label>
-        <input type="text" class="form-control" id="name" name="name">
+        <input type="text" class="form-control" id="name" name="name" required>
       </div>
       
       <div class="form-group">
         <label for="InputProduct">Number Of Product Purchased</label>
-        <input type="text" class="form-control" id="product" name="product">
+        <input type="text" class="form-control" id="product" name="product" required>
       </div>
 
       <button type="submit" class="btn btn-primary">Submit</button>

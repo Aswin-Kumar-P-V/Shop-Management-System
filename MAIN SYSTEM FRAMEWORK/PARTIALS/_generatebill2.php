@@ -3,8 +3,6 @@ include "session.php";
 include "config.php";
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-
-
     //fetching values
     $p_name = $_POST['productlist'];
     $p_quantity = $_POST['p_quantity'];
