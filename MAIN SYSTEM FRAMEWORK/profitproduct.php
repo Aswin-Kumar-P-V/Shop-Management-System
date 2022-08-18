@@ -63,10 +63,6 @@ include "session.php";
             <tbody>';
             $totalprofit=0;
         foreach ($data as $values) {
-            if ($count == 0) {
-                $count = 1;
-                continue;
-            } else {
                 $profit=$values[3]*($values[4]-$values[5]);
                 $totalprofit+=$profit;
                 echo "<tr>
@@ -74,9 +70,9 @@ include "session.php";
                 <td>$values[1]</td>
                 <td>$profit rs</td>
               </tr>";
-            }
             
         }
+            
         echo"<tr>
             <th>Total Profit</th>
             <td></td>

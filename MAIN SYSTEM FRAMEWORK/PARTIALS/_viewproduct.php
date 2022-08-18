@@ -50,7 +50,7 @@ include "session.php";
         $sql = "SELECT * FROM `product` WHERE 1";
         $result = mysqli_query($conn, $sql);
         $data = mysqli_fetch_all($result);
-        $count = 0;
+
 
         echo '<table class="table table-striped table-bordered">
             <thead class="thead-dark">
@@ -65,11 +65,9 @@ include "session.php";
             </thead>
             <tbody>';
 
-        foreach ($data as $values) {
-            if ($count == 0) {
-                $count = 1;
-                continue;
-            } else {
+        foreach ($data as $values)
+         {
+        
                 echo "<tr>
                 <th scope='row'>$values[0]</th>
                 <td>$values[1]</td>
@@ -79,7 +77,7 @@ include "session.php";
                 <td>$values[5] rs</td>
               </tr>";
             }
-        }
+        
 
         ?>
 

@@ -111,14 +111,8 @@ $data = mysqli_fetch_all($result);
                                     <select name="productlist" id="product list">
                                         <option value="Select">Select</option>
                                         <?php
-                                        $c=0;
                                         foreach ($data as $values) 
                                         {
-                                            if($c==0)
-                                            {
-                                                $c++;
-                                                continue;
-                                            }
                                             echo "<option value='$values[1]'>$values[0].$values[1]</option>";
                                         }
                                         ?>

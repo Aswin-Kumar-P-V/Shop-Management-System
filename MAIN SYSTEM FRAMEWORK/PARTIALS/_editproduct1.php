@@ -14,7 +14,10 @@ include "session.php";
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
     <script >
         function myFunction() {
-            alert("Do you want to delete the product?");
+            if(!confirm("Do you want to delete the product?"))
+            {
+                return false;
+            }
         }
     </script>
 
@@ -69,10 +72,8 @@ include "session.php";
             <tbody>';
 
         foreach ($data as $values) {
-            if ($count == 0) {
-                $count = 1;
-                continue;
-            } else {
+
+            
                 echo "<tr>
                 <th scope='row'>$values[0]</th>
                 <td>$values[1]</td>
@@ -80,9 +81,10 @@ include "session.php";
                 <td>$values[3]</td>
                 <td>$values[4] rs</td>
                 <td>$values[5] rs</td>
-                <td><form action='_editproduct2.php' method='POST'><button  type='submit' name='p_code' class='btn btn-primary' value=$values[0]>Update</button></form><form action='_deleteproduct.php' method='POST'><button type='submit'onclick='myFunction()' class='btn btn-danger' name='p_code' value=$values[0]>Delete</button></form>
+                <td><form action='_editproduct2.php' method='POST'><button  type='submit' name='p_code' class='btn btn-primary' value=$values[0]>Update</button></form>
+                    <form action='_deleteproduct.php' method='POST' onsubmit='return myFunction()'><button type='submit' class='btn btn-danger' name='p_code' value=$values[0]>Delete</button></form>
               </tr>";
-            }
+            
         }
 
         ?>
