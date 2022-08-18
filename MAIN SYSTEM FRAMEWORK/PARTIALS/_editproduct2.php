@@ -81,7 +81,7 @@ $data = mysqli_fetch_all($result);
                                     <label for="wholesale rate">Wholesale Rate</label>
                                     <input type="text" class="form-control" id="w_rate" name="w_rate" aria-describedby="emailHelp" value=<?php echo $data[0][5]?>>
                                 </div>
-                                <button type="submit" class="btn btn-primary" name="save">Submit</button><br>
+                                <button type="submit" class="btn btn-primary" name="save">Update</button><br>
                             </form>
                         </div>
                         </p>
