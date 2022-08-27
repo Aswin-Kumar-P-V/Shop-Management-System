@@ -23,7 +23,14 @@ include "session.php";
 <body>
 
   <!--navbar-->
-
+  <script >
+        function myFunction() {
+            if(!confirm("Logout?"))
+            {
+                return false;
+            }
+        }
+    </script>
   <nav class="navbar navbar-expand-lg bg-dark">
     <div class="container-fluid">
       <a class="navbar-brand" href="homepage.php">Main Page</a>
@@ -33,7 +40,7 @@ include "session.php";
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link" href="../LOGINSYSTEM/logout.php">Logout</a>
+            <a class="nav-link" href="../LOGINSYSTEM/logout.php" onclick='return myFunction()'>Logout</a>
           </li>
         </ul>
 
@@ -83,6 +90,7 @@ include "session.php";
       </div>
     </div>
   </div>
+  
 
   <!-- Optional JavaScript; choose one of the two! -->
 

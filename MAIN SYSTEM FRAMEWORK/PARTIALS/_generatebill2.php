@@ -66,6 +66,12 @@ $data = mysqli_fetch_all($result);
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+<script>
+    function display()
+    {
+        alert("Product is added to bill");
+    }
+</script>
 </head>
 
 <body>
@@ -123,7 +129,7 @@ $data = mysqli_fetch_all($result);
                                     <label for="prduct name">Product quantity</label>
                                     <input type="number" class="form-control" id="p_quantity" name="p_quantity" aria-describedby="emailHelp">
                                 </div>
-                                <button type="submit" class="btn btn-primary" name="save">Save</button><br>
+                                <button type="submit" class="btn btn-primary" onclick="display()" name="save">Save</button><br>
                             </form>
                         </div>
                         </p>

@@ -104,6 +104,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
     <title>Main Page</title>
+    <script >
+        function myFunction() {
+            if(!confirm("Do you want to Add the product?"))
+            {
+                return false;
+            }
+        }
+    </script>
 </head>
 
 <body>
@@ -121,7 +129,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     <div class="container my-4">
         <h1 class="text-center">Please Enter The Product Details 📝</h1>
-        <form action="addproduct.php" method="post">
+        <form action="addproduct.php" method="post" onsubmit="return myFunction()">
 
             <div class="form-group">
                 <label for="prduct code">Product Code</label>
