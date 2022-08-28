@@ -122,17 +122,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             <form action="signup.php" method="post">
                                 <div class="form-group">
                                     <label for="username">Username</label>
-                                    <input type="text" class="form-control" id="Username" name="Username" aria-describedby="emailHelp" required>
+                                    <input type="text" minlength="8" maxlength="18" class="form-control" id="Username" name="Username" aria-describedby="emailHelp" required>
 
                                 </div>
                                 <div class="form-group">
                                     <label for="password">Password</label>
-                                    <input type="password" class="form-control" id="Password" name="Password" required>
+                                    <input type="password" minlength="8" maxlength="18" class="form-control" id="Password" name="Password" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="cpassword">Confirm Password</label>
-                                    <input type="password" class="form-control" id="Cpassword" name="Cpassword" required>
-                                    <small id="emailHelp" class="form-text text-muted">Make sure to type the same password</small>
+                                    <input type="password" minlength="8" maxlength="18" class="form-control" id="Cpassword" name="Cpassword" required>
+                                    <small id="cpass" class="form-text text-muted">Make sure to type the same password</small>
                                 </div>
                                 <div class="form-group">
                                     <label for="DOB">Date of birth</label>

@@ -2,10 +2,12 @@
 //connecting to database via config.php inpartials folder//
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 include 'config.php';
+session_start();
 //fetching details//
 
 $username=$_POST["Username"];
 $dob=$_POST["Dob"];
+$_SESSION["userhere"]=$username;
 
 //Setting alert as error by default//
 
@@ -18,45 +20,23 @@ if($username!=null && $dob!=null)
     $sql="SELECT Password FROM login WHERE Username='$username' AND DOB='$dob'";
     $result=mysqli_query($conn,$sql);
     $data=mysqli_num_rows($result);
-    $pass=mysqli_fetch_row($result);
+    if($data)
+    {
+      header("location: ./PARTIALS/_forgotpassword.php");
+    }
+    else
+    {
+      echo'<div class="alert alert-danger alert-dismissible fade show" role="alert">
+      <strong>Error!</strong> User Does Not Exist!!"
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">×</span>
+      </button>
+  </div> ';
+    }
 }
 }
 ?>
 
-<!doctype html>
-<html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <script type="text/javascript">
-    function preventback(){window.history.forward()};
-    setTimeout("preventback()",0);
-    window.onunload=function(){null;}
-  </script>
-  </head>
-<body>
-<?php
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-if($data!=null)
-{
-    echo"<div class='alert alert-primary' role='alert'>
-    Your password is '$pass[0]'....Please proceed to <a href='login.php'>login</a>
-  </div>";
-}
-else
-{
-  echo"<div class='alert alert-danger' role='alert'>
-    Invalid credentials
-  </div>";
-}
-}
-?>
-</body>
-</html>
 <!doctype html>
 <html lang="en">
 
@@ -65,11 +45,7 @@ else
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>login</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-  <script type="text/javascript">
-    function preventback(){window.history.forward()};
-    setTimeout("preventback()",0);
-    window.onunload=function(){null;}
-  </script>
+
 </head>
 
 <body>
@@ -85,7 +61,7 @@ else
             <form action="forgotpassword.php" method="post">
               <div class="form-group">
                 <label for="username">Username</label>
-                <input type="text" class="form-control" id="Username" name="Username" aria-describedby="emailHelp" required>
+                <input type="text" class="form-control" id="Username" name="Username" aria-describedby="emailHelp" required minlength="8" maxlength="18">
               </div>
               <div class="form-group">
                 <label for="date of birth">Date Of Birth</label>
