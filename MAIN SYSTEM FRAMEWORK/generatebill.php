@@ -49,7 +49,7 @@ include "session.php";
       
       <div class="form-group">
         <label for="InputProduct">Number Of Product Purchased</label>
-        <input type="text" class="form-control" id="product" name="product" required>
+        <input type="number" min="1" max="100" class="form-control" id="product" name="product" required>
       </div>
 
       <button type="submit" class="btn btn-primary">Submit</button>

@@ -118,7 +118,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     <!--navbar-->
 
-    <nav class="navbar navbar-expand-lg bg-dark">
+    <nav class="navbar navbar-expand-lg bg-dark ">
         <div class="container-fluid">
             <a class="navbar-brand" href="homepage.php">Main Page</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -133,27 +133,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             <div class="form-group">
                 <label for="prduct code">Product Code</label>
-                <input type="text" class="form-control" id="p_code" name="p_code" aria-describedby="emailHelp" required>
+                <input type="number" min="1" max="100000" class="form-control" id="p_code" name="p_code" aria-describedby="emailHelp" required>
             </div>
 
             <div class="form-group">
                 <label for="prduct name">Product Name</label>
-                <input type="text" class="form-control" id="p_name" name="p_name" aria-describedby="emailHelp" required>
+                <input type="text" class="form-control" id="p_name" name="p_name" aria-describedby="emailHelp" required >
             </div>
 
             <div class="form-group">
                 <label for="purchases">Stock available</label>
-                <input type="text" class="form-control" id="purchases" name="purchases" aria-describedby="emailHelp" required>
+                <input type="number" min="1" max="100000" class="form-control" id="purchases" name="purchases" aria-describedby="emailHelp" required>
             </div>
 
             <div class="form-group">
                 <label for="MRP">MRP</label>
-                <input type="text" class="form-control" id="mrp" name="mrp" aria-describedby="emailHelp" required>
+                <input type="text" minlength="1" maxlength="100000"  class="form-control" id="mrp" name="mrp" aria-describedby="emailHelp" required pattern="[+-]?([0-9]*[.])?[0-9]+" title="Please Enter numerical value">
             </div>
 
             <div class="form-group">
                 <label for="wholesale rate">Wholesale Rate</label>
-                <input type="text" class="form-control" id="w_rate" name="w_rate" aria-describedby="emailHelp" required>
+                <input type="text" minlength="1" maxlength="100000" class="form-control" id="w_rate" name="w_rate" aria-describedby="emailHelp" required pattern="[+-]?([0-9]*[.])?[0-9]+" title="Please Enter numerical value">
             </div>
 
 

@@ -73,7 +73,7 @@ include "session.php";
             <h5 class="card-title">Edit Data</h5>
             <p class="card-text">To add a new product</p>
             <a href="addproduct.php" class="btn btn-primary">Go Here</a>
-            <p class="card-text">To edit existing product details</p>
+            <p class="card-text">To edit/delete existing product details</p>
             <a href="PARTIALS/_editproduct1.php" class="btn btn-primary">Go Here</a>
           </div>
         </div>

@@ -109,12 +109,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <form action="login.php" method="post">
               <div class="form-group">
                 <label for="username">Username</label>
-                <input type="text" class="form-control" id="Username" name="Username" aria-describedby="emailHelp" required>
+                <input type="text" class="form-control" id="Username" name="Username" aria-describedby="emailHelp" required minlength="8" maxlength="18">
 
               </div>
               <div class="form-group">
                 <label for="password">Password</label>
-                <input type="password" class="form-control" id="Password" name="Password" required>
+                <input type="password" class="form-control" id="Password" name="Password" required minlength="8" maxlength="18">
               </div>
 
 

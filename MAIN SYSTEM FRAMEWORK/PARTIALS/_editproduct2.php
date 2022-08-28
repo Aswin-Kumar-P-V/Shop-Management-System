@@ -17,6 +17,14 @@ $data = mysqli_fetch_all($result);
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+    <script >
+        function myFunction() {
+            if(!confirm("Caution!! \n Any changes made will be updated..continue?"))
+            {
+                return false;
+            }
+        }
+    </script>
 </head>
 
 <body>
@@ -69,19 +77,19 @@ $data = mysqli_fetch_all($result);
 
                                 <div class="form-group">
                                     <label for="purchases">Stock available</label>
-                                    <input type="text" class="form-control" id="purchases" name="purchases" aria-describedby="emailHelp" value=<?php echo $data[0][2]?> >
+                                    <input type="number" min="1" max="100000" class="form-control" id="purchases" name="purchases" aria-describedby="emailHelp" value=<?php echo $data[0][2]?> >
                                 </div>
 
                                 <div class="form-group">
                                     <label for="MRP">MRP</label>
-                                    <input type="text" class="form-control" id="mrp" name="mrp" aria-describedby="emailHelp"value=<?php echo $data[0][4]?>>
+                                    <input type="text" minlength="1" maxlength="100000" class="form-control" id="mrp" name="mrp" aria-describedby="emailHelp" pattern="[+-]?([0-9]*[.])?[0-9]+" title="Please Enter numerical value" value=<?php echo $data[0][4]?>>
                                 </div>
 
                                 <div class="form-group">
                                     <label for="wholesale rate">Wholesale Rate</label>
-                                    <input type="text" class="form-control" id="w_rate" name="w_rate" aria-describedby="emailHelp" value=<?php echo $data[0][5]?>>
+                                    <input type="text" minlength="1" maxlength="100000" class="form-control" id="w_rate" name="w_rate" aria-describedby="emailHelp" pattern="[+-]?([0-9]*[.])?[0-9]+" title="Please Enter numerical value" value=<?php echo $data[0][5]?>>
                                 </div>
-                                <button type="submit" class="btn btn-primary" name="save">Update</button><br>
+                                <button type="submit" class="btn btn-primary" name="save" onclick="myFunction()">Update</button><br>
                             </form>
                         </div>
                         </p>

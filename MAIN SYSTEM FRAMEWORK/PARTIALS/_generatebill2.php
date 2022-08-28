@@ -127,7 +127,7 @@ $data = mysqli_fetch_all($result);
 
                                 <div class="form-group">
                                     <label for="prduct name">Product quantity</label>
-                                    <input type="number" class="form-control" id="p_quantity" name="p_quantity" aria-describedby="emailHelp">
+                                    <input type="number" class="form-control" id="p_quantity" name="p_quantity"  aria-describedby="emailHelp">
                                 </div>
                                 <button type="submit" class="btn btn-primary" onclick="display()" name="save">Save</button><br>
                             </form>
