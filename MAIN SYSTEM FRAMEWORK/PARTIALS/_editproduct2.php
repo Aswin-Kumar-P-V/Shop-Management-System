@@ -26,7 +26,7 @@ foreach($result as $value){
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
     <script >
         function myFunction() {
-            if(!confirm("Caution!! \n Any changes made will be updated..continue?"))
+            if(alert("Caution!! \n Any changes made will be updated.."))
             {
                 return false;
             }
@@ -74,7 +74,7 @@ foreach($result as $value){
                             <form method="POST" action="_editproduct3.php">
                                 <div class="form-group">
                                     <label for="prduct code">Product Code : </label>
-                                    <label><?php echo $data[0][0];?></label> 
+                                    <input type="text" name="p_code" value=<?php echo $data[0][0]?> readonly>
                                 </div>
                                 <div class="form-group">
                                     <label for="prduct name">Product Name : </label><br>
