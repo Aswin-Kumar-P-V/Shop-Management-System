@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 20, 2022 at 02:40 PM
+-- Generation Time: Aug 28, 2022 at 01:02 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -38,11 +38,11 @@ CREATE TABLE `login` (
 --
 
 INSERT INTO `login` (`Username`, `Password`, `DOB`) VALUES
-('admin', 'root', '2002-09-23'),
-('aswin123', 'root', '2022-06-14'),
-('magnum', 'root', '2022-06-14'),
-('nived', 'root', '2022-06-18'),
-('project', 'root123', '2002-09-23');
+('', '', '0000-00-00'),
+('ajaykankun', 'kannapino1', '2002-08-24'),
+('athirakv', '12345678', '2002-10-30'),
+('dakshina', '12345678', '2002-10-30'),
+('shopkeeper123', '$hopkeeper', '2002-09-23');
 
 -- --------------------------------------------------------
 
@@ -64,12 +64,18 @@ CREATE TABLE `product` (
 --
 
 INSERT INTO `product` (`product_code`, `product_name`, `purchases`, `sales`, `mrp`, `wholesale_rate`) VALUES
-(0, '', 0, 0, 0, 0),
-(1, 'brush', 20, 10, 21, 17.5),
-(2, 'Colgate', 30, 13, 50, 42),
-(3, 'munch', 10, 7, 5, 4),
-(4, 'Shampoo', 50, 17, 2, 1.5),
-(5, 'Classmate notebook', 12, 9, 55, 52);
+(1, 'Brush', 100, 20, 15, 13.5),
+(2, 'Colgate', 60, 20, 35, 31.5),
+(3, 'Munch', 36, 14, 5, 4),
+(4, 'Batteries', 29, 11, 12, 9),
+(5, 'Kit Kat', 58, 2, 10, 8.5),
+(6, 'Dark Fantasy', 10, 9, 30, 27),
+(7, 'American Tourister School Bags', 10, 0, 1020, 820),
+(8, 'Mineral water 1 ltr', 118, 2, 15, 12),
+(9, 'Class Mate Eraser', 25, 0, 5, 3.5),
+(10, 'Class Mate Pencil', 77, 23, 5, 4.5),
+(11, 'Syska Led 10 W', 1, 4, 75, 63.5),
+(12, 'Milk Bread', 7, 1, 25, 21.5);
 
 --
 -- Indexes for dumped tables

@@ -9,12 +9,14 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
 
-    <style> .container-fluid{
+    <style>
+        .container-fluid {
 
-width:40%;
-margin-left: 21%;
+            width: 40%;
+            margin-left: 21%;
 
-}</style>
+        }
+    </style>
 </head>
 
 <body>
@@ -45,6 +47,8 @@ margin-left: 21%;
     include "session.php";
     $name = $_SESSION['tablename']; ?>
     <div class="container">
+        <p>
+        <h4>Shop Name : My Shop <br> Address : Pulinkunnu, Alappuzha</h4><br>
         <h4>Customer Name :<?= $name; ?><h4>
     </div>
     <?php

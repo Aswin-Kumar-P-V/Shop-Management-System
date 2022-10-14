@@ -6,6 +6,13 @@ $p_code = $_POST['p_code'];
 $sql = "SELECT * FROM `product` WHERE product_code=$p_code";
 $result = mysqli_query($conn, $sql);
 $data = mysqli_fetch_all($result);
+foreach($result as $value){
+    $pname=$value['product_name'];
+
+
+}
+
+
 ?>
 <!doctype html>
 <html lang="en">
@@ -19,7 +26,7 @@ $data = mysqli_fetch_all($result);
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
     <script >
         function myFunction() {
-            if(!confirm("Caution!! \n Any changes made will be updated..continue?"))
+            if(alert("Caution!! \n Any changes made will be updated.."))
             {
                 return false;
             }
@@ -66,13 +73,12 @@ $data = mysqli_fetch_all($result);
 
                             <form method="POST" action="_editproduct3.php">
                                 <div class="form-group">
-                                    <label for="prduct code">Product Code</label>
-                                    <input type="text" class="form-control" id="p_code" name="p_code" aria-describedby="emailHelp" readonly="readonly" value=<?php echo $data[0][0]?>>
+                                    <label for="prduct code">Product Code : </label>
+                                    <input type="text" name="p_code" value=<?php echo $data[0][0]?> readonly>
                                 </div>
-
                                 <div class="form-group">
-                                    <label for="prduct name">Product Name</label>
-                                    <input type="text" class="form-control" id="p_name" name="p_name" aria-describedby="emailHelp" readonly="readonly" value=<?php echo $data[0][1]?> >
+                                    <label for="prduct name">Product Name : </label><br>
+                                    <label><?php echo $data[0][1];?></label> 
                                 </div>
 
                                 <div class="form-group">
